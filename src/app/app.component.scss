@@ -1,0 +1,49 @@
+h1 {
+    color: blueviolet;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    >*:not(pre) {
+        margin-bottom: 20px;
+    }
+}
+
+.btn {
+    padding: 5px 10px;
+    background-color: #fff;
+    box-shadow: 0 3px 0 0 #5353b1;
+    outline: none;
+    -webkit-user-select: none;
+    border: 1px solid blue;
+    border-radius: 4px;
+    position: relative;
+    top: 0;
+    transition: all 0.04s ease;
+    &:active {
+        top: 3px;
+        box-shadow: none;
+    }
+    &:hover {
+        color: blue;
+    }
+    &:disabled {
+        border-color: #cdcdcd;
+        box-shadow: none;
+        &:hover {
+            color: #cdcdcd;
+        }
+    }
+    span {
+        display: flex;
+        align-items: center;
+    }
+    img {
+        margin-left: 5px;
+        height: 20px;
+        width: auto;
+    }
+}
