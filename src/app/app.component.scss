@@ -27,7 +27,8 @@ div {
         top: 3px;
         box-shadow: none;
     }
-    &:hover {
+    &:hover,
+    &:focus {
         color: blue;
     }
     &:disabled {

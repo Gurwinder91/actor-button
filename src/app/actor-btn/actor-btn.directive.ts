@@ -1,4 +1,4 @@
-import { Directive, OnDestroy, ElementRef, Renderer2, EventEmitter } from '@angular/core';
+import { Directive, OnDestroy, EventEmitter } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 
 import { Observable, Subscription } from 'rxjs';
@@ -15,8 +15,8 @@ import { BtnState, BtnAction } from './interfaces';
     'stateChange'
   ],
   host: {
-    '(click)': 'btnPressed($event)',
-    '(submit)': 'btnPressed($event)',
+    '(click)': 'btnClicked($event)',
+    '(keypress)': 'btnPressed($event)',
     '[disabled]': 'disable'
   },
   exportAs: 'actorBtn'
@@ -29,25 +29,36 @@ export class ActorBtnDirective implements OnDestroy {
 
   stateChange = new EventEmitter();
 
-  btnPressed(event: MouseEvent) {
+  btnPressed(event: KeyboardEvent) {
     event.preventDefault();
+    const keyCode = event.keyCode || event.which;
+    if (keyCode === 13){
+      this._acting();
+    }
+  }
 
-    this._changeState({clicked: true});
+  btnClicked(event: MouseEvent) {
+    event.preventDefault();
+    this._acting();
+  }
+
+  private _acting(){
+    this._changeState({ clicked: true });
     const HTTP_HEADERS = { headers: new HttpHeaders({ 'childSpinner': 'TRUE' }) };
 
     const action: Observable<any> | Promise<any> | boolean | void = this.action.act(HTTP_HEADERS);
     if (action instanceof Observable) { // Check if return type is observable
       this._subscription = (action as Observable<any>)
         .pipe(finalize(() => {
-          this._changeState({clicked: false});
+          this._changeState({ clicked: false });
         }))
         .subscribe(res => { });
     } else if (action instanceof Promise) { // Check if return type is Promise
       (action as Promise<any>).finally(() => {
-        this._changeState({clicked: false});
+        this._changeState({ clicked: false });
       });
     } else {
-      this._changeState({clicked: false});
+      this._changeState({ clicked: false });
     }
   }
 
