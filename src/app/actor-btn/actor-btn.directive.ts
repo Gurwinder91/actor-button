@@ -7,9 +7,9 @@ import { finalize } from 'rxjs/operators';
 import { BtnState, BtnAction } from './interfaces';
 
 @Directive({
-  selector: 'button[actorBtn], button[actor-btn]',
+  selector: 'button[actorBtn]',
   inputs: [
-    'action'
+    'action: actorBtn'
   ],
   outputs: [
     'stateChange'
@@ -24,6 +24,7 @@ import { BtnState, BtnAction } from './interfaces';
 export class ActorBtnDirective implements OnDestroy {
 
   action: BtnAction;
+
   disable: boolean;
   private _subscription: Subscription;
 
@@ -43,10 +44,13 @@ export class ActorBtnDirective implements OnDestroy {
   }
 
   private _acting(){
+    if(!this.action){
+      throw new Error(`button event handler is not passed. Pass it from [action] attribute`);
+    }
     this._changeState({ clicked: true });
     const HTTP_HEADERS = { headers: new HttpHeaders({ 'childSpinner': 'TRUE' }) };
 
-    const action: Observable<any> | Promise<any> | boolean | void = this.action.act(HTTP_HEADERS);
+    const action = this.action.act(HTTP_HEADERS);
     if (action instanceof Observable) { // Check if return type is observable
       this._subscription = (action as Observable<any>)
         .pipe(finalize(() => {

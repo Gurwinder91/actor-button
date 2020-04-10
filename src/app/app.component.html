@@ -4,36 +4,39 @@
 
 <div>
     <span>
-    <button class="btn" actor-btn [action]="btnActionOb" (stateChange)="btnState1 = $event">
+    <button class="btn" [actorBtn]="btnActionOb" (stateChange)="btnState1 = $event">
       Using Observable
     </button>
+    <code>
+      {{btnState1 | json}}
+    </code>
+  </span>
+
+    <span>
+    <button class="btn" [actorBtn]="btnActionPm" (stateChange)="btnState2 = $event">
+      <span>
+        Using Promise
+        <img src="/assets/loader.gif" *ngIf="btnState2?.clicked">
+      </span>
+    </button>
+    <code>
+    {{btnState2 | json}}
+  </code>
+    </span>
+
+    <span>
+    <button class="btn" [actorBtn]="btnActionBl" (stateChange)="btnState3 = $event">Using Boolean</button>
+    <code>
+    {{btnState3 | json}}
+  </code>
+  </span>
+
+    <span>
+    <button class="btn" [actorBtn]="btnActionVoid" (stateChange)="btnState4 = $event">With No Return</button>
+    <code>
+    {{btnState4 | json}}
+  </code>
   </span>
 
 
-    <button class="btn" actor-btn [action]="btnActionPm" (stateChange)="btnState2 = $event">
-    <span>
-      Using Promise
-      <img src="/assets/loader.gif" *ngIf="btnState2?.clicked">
-    </span>
-  </button>
-
-    <button class="btn" actor-btn [action]="btnActionBl" (stateChange)="btnState3 = $event">Using Boolean</button>
-
-    <button class="btn" actor-btn [action]="btnActionVoid" (stateChange)="btnState4 = $event">With No Return</button>
-
-</div>
-
-<div>
-    <pre>
-    {{btnState1 | json}}
-  </pre>
-    <pre>
-    {{btnState2 | json}}
-  </pre>
-    <pre>
-    {{btnState3 | json}}
-  </pre>
-    <pre>
-    {{btnState4 | json}}
-  </pre>
 </div>

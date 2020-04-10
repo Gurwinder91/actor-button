@@ -1,5 +1,5 @@
 h1 {
-    color: blueviolet;
+    color: blue;
 }
 
 div {
@@ -7,6 +7,12 @@ div {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    span {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+    }
     >*:not(pre) {
         margin-bottom: 20px;
     }
