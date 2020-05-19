@@ -13,15 +13,15 @@ we are doing some asynchronous task.
 
 Add below Module, In your app.module.ts file
 
-`import {ActorBtnModule} from 'actor-btn'`
+> import {ActorBtnModule} from 'actor-btn'
 
 Add Below to your component where you want to use Actor Btn
 
-`import { BtnAction, BtnState } from 'actor-btn';`
+> import { BtnAction, BtnState } from 'actor-btn';
 
 Note: BtnState will provide you flag when operation start or end. You can show and hide loader by listening to it.
 
-` ngOnInit() {
+> ngOnInit() {
     this.btnAction = {
       act: this.asyncOperation
     }
@@ -29,16 +29,16 @@ Note: BtnState will provide you flag when operation start or end. You can show a
 asyncOperation() {
     // Your async operation.
     return of('sucess').pipe(delay(2000));
-  }
-    `
+}
+
 In Html of the same component refer to below code
 
-`<button class="btn" [actorBtn]="btnAction" (stateChange)="btnState = $event">
+> <button class="btn" [actorBtn]="btnAction" (stateChange)="btnState = $event">
     <span>
       Using Promise
       <img src="/assets/loader.gif" *ngIf="btnState?.clicked">
     </span>
   </button>
-  `
+
 
 
