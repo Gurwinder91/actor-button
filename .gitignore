@@ -3,3 +3,6 @@
 
 #package-lock.json
 /package-lock.json
+
+#publish files
+dist

@@ -26,7 +26,7 @@ Note: BtnState will provide you flag when operation start or end. You can show a
       act: this.asyncOperation
     }
 
-asyncOperation() {
+> asyncOperation() {
     // Your async operation.
     return of('sucess').pipe(delay(2000));
 }

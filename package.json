@@ -1,12 +1,10 @@
 {
   "name": "actor-button",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:patch": "npm version patch && ng build --prod",
-    "build:major": "npm version major && ng build --prod",
-    "build:minor": "npm version minor && ng build --prod",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
