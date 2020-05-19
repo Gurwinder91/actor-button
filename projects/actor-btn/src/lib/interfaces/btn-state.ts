@@ -1,3 +1,3 @@
 export interface BtnState {
-  clicked: boolean;
+    clicked: boolean;
 }

@@ -1,0 +1,13 @@
+{
+  "name": "actor-btn",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^9.1.7",
+    "@angular/core": "^9.1.7",
+    "tslib": "^1.10.0"
+  },
+  "keywords": [
+    "Angular",
+    "Button Loader"
+  ]
+}
