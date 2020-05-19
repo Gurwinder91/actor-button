@@ -1,27 +1,44 @@
-# ActorButton
+# ActorBtn
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+This is a lightweight library created using latest Angular 9 to show loader on button when
+we are doing some asynchronous task.
 
-## Development server
+[Stackblitz Demo](https://stackblitz.com/edit/actor-btn)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## How to install
 
-## Code scaffolding
+> npm install actor-btn --save 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How to use
 
-## Build
+Add below Module, In your app.module.ts file
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+`import {ActorBtnModule} from 'actor-btn'`
 
-## Running unit tests
+Add Below to your component where you want to use Actor Btn
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`import { BtnAction, BtnState } from 'actor-btn';`
 
-## Running end-to-end tests
+Note: BtnState will provide you flag when operation start or end. You can show and hide loader by listening to it.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+` ngOnInit() {
+    this.btnAction = {
+      act: this.asyncOperation
+    }
 
-## Further help
+asyncOperation() {
+    // Your async operation.
+    return of('sucess').pipe(delay(2000));
+  }
+    `
+In Html of the same component refer to below code
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+`<button class="btn" [actorBtn]="btnAction" (stateChange)="btnState = $event">
+    <span>
+      Using Promise
+      <img src="/assets/loader.gif" *ngIf="btnState?.clicked">
+    </span>
+  </button>
+  `
+
+
