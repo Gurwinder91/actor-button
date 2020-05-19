@@ -9,5 +9,9 @@
   "keywords": [
     "Angular",
     "Button Loader"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gurwinder91/actor-button/"
+  }
 }
