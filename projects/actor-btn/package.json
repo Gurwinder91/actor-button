@@ -1,6 +1,6 @@
 {
   "name": "actor-btn",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "peerDependencies": {
     "@angular/common": "^9.1.7",
     "@angular/core": "^9.1.7",
@@ -8,7 +8,8 @@
   },
   "keywords": [
     "Angular",
-    "Button Loader"
+    "Button Loader",
+    "Button Spinner"
   ],
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 # Actor Button
-This is a lightweight library developed using latest Angular 9 to show loader on button when we are doing some asynchronous task. 
+This is a lightweight library developed using latest Angular 9 to show or hide loader on button or disable it when we are doing some asynchronous task. 
 [StackBlitz Demo](https://stackblitz.com/edit/actor-btn)
 
 ## How to install
@@ -36,5 +36,21 @@ Note: you can also have promise operation. For reference, please visit [StackBli
  </button>
 `
 
+Note: you can listen to **btnState** event to show and hide loader or to do anything else, according to your use case.
 
-Note: you can listen to **btnState** to show and hide loader or to do anything else, according to your use case.
+### Advance Guide
+Actor Btn is also exposing header which you can use to show and hide global loader when you are showing loader on your button. Refer below example for that
+
+<pre>
+ngOnInit() {
+   this.btnAction = {
+     act: options => this.callingService(options);
+   }
+ }
+
+callingService(headers: {[name: string]: any }){
+  return this.httpClient.get('YOUR URL', headers);
+}
+</pre>
+
+you can listen these headers in your interceptor and apply your condition, if actorBtn is present in headers then show or hide your global loader.
